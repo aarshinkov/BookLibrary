@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1>Book library</h1>
+    <p class="lead">Welcome! Here you can store, edit and view some of your favorite books.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2><b>Welcome...</b></h2>
+        <p>
+            You have entered MBL - Modern Book Library. In this web application you'd be able to store
+            some of your favorite books. If you'd like to get to know who we really are just click the link below.
+        </p>
+        <p><a class="btn btn-primary" href="@Url.Action("About", "Home")">About us &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2><b>Explore...</b></h2>
+        <p>
+            You are searching for books and all the related information about them?
+            Or you are searching for a specific author? You can find everything with a simple click of one of the links below.
+        </p>
+        <p>
+            <a class="btn btn-primary" href="#">Books &raquo;</a>
+            <a class="btn btn-success" href="#">Writers &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2><b>Want to buy a book?</b></h2>
+        <p>
+            If you'd like to buy a book that you have seen in our website just make a request by clicking the link below
+            and filling the form and you can enjoy your new book in a matter of a day or two.
+        </p>
+        <p><a class="btn btn-primary" href="#">Hire a book &raquo;</a></p>
+    </div>
+</div>
