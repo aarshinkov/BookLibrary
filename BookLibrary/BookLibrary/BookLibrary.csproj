@@ -199,6 +199,7 @@
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WritersController.cs" />
     <Compile Include="Entity\Book.cs" />
     <Compile Include="Entity\Genre.cs" />
     <Compile Include="Entity\Writer.cs" />
@@ -286,6 +287,11 @@
     <Content Include="Views\Genres\Details.cshtml" />
     <Content Include="Views\Genres\Edit.cshtml" />
     <Content Include="Views\Genres\Index.cshtml" />
+    <Content Include="Views\Writers\Create.cshtml" />
+    <Content Include="Views\Writers\Delete.cshtml" />
+    <Content Include="Views\Writers\Details.cshtml" />
+    <Content Include="Views\Writers\Edit.cshtml" />
+    <Content Include="Views\Writers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
