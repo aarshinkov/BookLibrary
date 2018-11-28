@@ -15,6 +15,7 @@ namespace BookLibrary.Entity
         [StringLength(300, MinimumLength = 1)]
         public string Title { get; set; }
 
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
 
         [Required]

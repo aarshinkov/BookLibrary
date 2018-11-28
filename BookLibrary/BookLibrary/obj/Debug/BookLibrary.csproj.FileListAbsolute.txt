@@ -235,10 +235,10 @@ S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\Microsoft.AI.DependencyColle
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\Microsoft.AI.WindowsServer.xml
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\Microsoft.AI.Web.xml
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csprojAssemblyReference.cache
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.Migrations.initial.resources
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csproj.GenerateResource.cache
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csproj.CoreCompileInputs.cache
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csproj.CopyComplete
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.dll
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.pdb
+S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csprojAssemblyReference.cache
