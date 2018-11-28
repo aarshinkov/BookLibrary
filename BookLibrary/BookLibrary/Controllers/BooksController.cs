@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using BookLibrary.Entity;
 using BookLibrary.Models;
@@ -32,12 +29,19 @@ namespace BookLibrary.Controllers
 
             ViewBag.CurrentSortParam = sortOrder;
             ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.ReleaseDateSortParam = sortOrder == "release_date_asc" ? "release_date_desc" : "release_date_asc";
             ViewBag.WriterSortParam = sortOrder == "writer_asc" ? "writer_desc" : "writer_asc";
 
             switch (sortOrder)
             {
                 case "title_desc":
                     books = books.OrderByDescending(x => x.Title);
+                    break;
+                case "release_date_asc":
+                    books = books.OrderBy(x => x.ReleaseDate);
+                    break;
+                case "release_date_desc":
+                    books = books.OrderByDescending(x => x.ReleaseDate);
                     break;
                 case "writer_asc":
                     books = books.OrderBy(x => x.Writer.UserName);

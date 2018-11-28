@@ -22,7 +22,7 @@ namespace BookLibrary.Entity
         [Display(Name = "Writer")]
         public int? WriterId { get; set; }
 
-        public Writer Writer { get; set; }
+        public virtual Writer Writer { get; set; }
 
         [Required]
         [Display(Name = "Genre")]
