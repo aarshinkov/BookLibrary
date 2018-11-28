@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BookLibrary.Entity;
 using BookLibrary.Models;
+using PagedList;
 
 namespace BookLibrary.Controllers
 {
@@ -16,10 +17,43 @@ namespace BookLibrary.Controllers
         private BookCatalogDbContext db = new BookCatalogDbContext();
 
         // GET: Books
-        public ActionResult Index()
+        public ActionResult Index(int? page, string titleSearch, string sortOrder)
         {
-            var books = db.Books.Include(b => b.Genre).Include(b => b.Writer);
-            return View(books.ToList());
+            int pageNumber = page ?? 1;
+            int pageSize = 5;
+            IQueryable<Book> books = db.Books.AsQueryable();
+
+            ViewBag.TitleSearch = titleSearch;
+
+            if (!String.IsNullOrEmpty(titleSearch) && this.User.Identity.IsAuthenticated)
+            {
+                books = books.Where(x => x.Title.Contains(titleSearch));
+            }
+
+            ViewBag.CurrentSortParam = sortOrder;
+            ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.WriterSortParam = sortOrder == "writer_asc" ? "writer_desc" : "writer_asc";
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    books = books.OrderByDescending(x => x.Title);
+                    break;
+                case "writer_asc":
+                    books = books.OrderBy(x => x.Writer.UserName);
+                    break;
+                case "writer_desc":
+                    books = books.OrderByDescending(x => x.Writer.UserName);
+                    break;
+                default:
+                    books = books.OrderBy(x => x.Title);
+                    break;
+            }
+
+            return View(books.ToPagedList(pageNumber, pageSize));
+
+            //var books = db.Books.Include(b => b.Genre).Include(b => b.Writer);
+            //return View(books.ToList());
         }
 
         // GET: Books/Details/5
@@ -38,6 +72,7 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Books/Create
+        //[Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "GenreName");
@@ -48,6 +83,7 @@ namespace BookLibrary.Controllers
         // POST: Books/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BookId,Title,ReleaseDate,WriterId,GenreId,Description")] Book book)
@@ -65,6 +101,7 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Books/Edit/5
+        //[Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +121,7 @@ namespace BookLibrary.Controllers
         // POST: Books/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "BookId,Title,ReleaseDate,WriterId,GenreId,Description")] Book book)
@@ -100,6 +138,7 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Books/Delete/5
+        //[Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,6 +154,7 @@ namespace BookLibrary.Controllers
         }
 
         // POST: Books/Delete/5
+        //[Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -242,3 +242,7 @@ S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csproj.Cop
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.dll
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.pdb
 S:\Projects\BookLibrary\BookLibrary\BookLibrary\obj\Debug\BookLibrary.csprojAssemblyReference.cache
+S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\PagedList.dll
+S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\PagedList.Mvc.dll
+S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\PagedList.xml
+S:\Projects\BookLibrary\BookLibrary\BookLibrary\bin\PagedList.Mvc.xml
