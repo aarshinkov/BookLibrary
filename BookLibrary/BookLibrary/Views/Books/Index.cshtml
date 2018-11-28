@@ -8,9 +8,12 @@
 
 <h2>Books</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -31,7 +34,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Writer.LastName)
         </th>
-        <th>Operations</th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th>Operations</th>
+        }
     </tr>
 
     @foreach (var item in Model)
@@ -55,11 +61,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Writer.LastName)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BookId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.BookId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
-            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BookId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BookId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
+                </td>
+            }
         </tr>
     }
 

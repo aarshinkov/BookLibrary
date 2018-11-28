@@ -22,6 +22,7 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Writers/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +38,7 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Writers/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +47,7 @@ namespace BookLibrary.Controllers
         // POST: Writers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "WriterId,FirstName,LastName,UserName")] Writer writer)
@@ -60,6 +63,7 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Writers/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +81,7 @@ namespace BookLibrary.Controllers
         // POST: Writers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "WriterId,FirstName,LastName,UserName")] Writer writer)
@@ -91,6 +96,7 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Writers/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +112,7 @@ namespace BookLibrary.Controllers
         }
 
         // POST: Writers/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
