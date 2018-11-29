@@ -43,7 +43,7 @@ ___
 
 ## Reference
 
-### Atanas Arshinkov (me) - Java Developer
+### Atanas Arshinkov (me) - Software Developer
 
 [GitHub account](https://www.github.com/aarshinkov)
 
