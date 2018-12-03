@@ -14,6 +14,33 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 }
+@if (User.Identity.IsAuthenticated)
+{
+    <hr />
+    using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @Html.TextBox("bookTitleSearch", (string)ViewBag.TitleSearch, new { @class = "form-control", placeholder = "Book title", autofocus = true })
+            </div>
+            <div class="col-md-2">
+                @Html.TextBox("writerFNameSearch", (string)ViewBag.TitleSearch, new { @class = "form-control", placeholder = "Writer first name" })
+            </div>
+            <div class="col-md-2">
+                @Html.TextBox("writerLNameSearch", (string)ViewBag.TitleSearch, new { @class = "form-control", placeholder = "Writer last name" })
+            </div>
+            <button class="btn btn-primary">
+                <i class="glyphicon glyphicon-search"></i>
+                <span>Search</span>
+            </button>
+            <button type="reset" class="btn btn-success">
+                <i class="glyphicon glyphicon-remove"></i>
+                <span>Clear</span>
+            </button>
+        </div>
+        <div class="col-md-2" style="height: 50px;"></div>
+    }
+}
 <table class="table">
     <tr>
         <th>

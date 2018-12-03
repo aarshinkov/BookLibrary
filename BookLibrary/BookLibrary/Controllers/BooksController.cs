@@ -14,17 +14,25 @@ namespace BookLibrary.Controllers
         private BookCatalogDbContext db = new BookCatalogDbContext();
 
         // GET: Books
-        public ActionResult Index(int? page, string titleSearch, string sortOrder)
+        public ActionResult Index(int? page, string bookTitleSearch, string writerFNameSearch, string writerLNameSearch, string sortOrder)
         {
             int pageNumber = page ?? 1;
             int pageSize = 5;
             IQueryable<Book> books = db.Books.AsQueryable();
 
-            ViewBag.TitleSearch = titleSearch;
+            ViewBag.TitleSearch = bookTitleSearch;
 
-            if (!String.IsNullOrEmpty(titleSearch) && this.User.Identity.IsAuthenticated)
+            if (!String.IsNullOrEmpty(bookTitleSearch) && this.User.Identity.IsAuthenticated)
             {
-                books = books.Where(x => x.Title.Contains(titleSearch));
+                books = books.Where(x => x.Title.Contains(bookTitleSearch));
+            }
+            if (!String.IsNullOrEmpty(writerFNameSearch) && this.User.Identity.IsAuthenticated)
+            {
+                books = books.Where(x => x.Writer.FirstName.Contains(writerFNameSearch));
+            }
+            if (!String.IsNullOrEmpty(writerLNameSearch) && this.User.Identity.IsAuthenticated)
+            {
+                books = books.Where(x => x.Writer.LastName.Contains(writerLNameSearch));
             }
 
             ViewBag.CurrentSortParam = sortOrder;
