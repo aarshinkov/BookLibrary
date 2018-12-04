@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -16,6 +17,7 @@ namespace BookLibrary.Controllers
         // GET: Books
         public ActionResult Index(int? page, string bookTitleSearch, string writerFNameSearch, string writerLNameSearch, string sortOrder)
         {
+            //TODO for search by genre add string GenreId as parameter
             int pageNumber = page ?? 1;
             int pageSize = 5;
             IQueryable<Book> books = db.Books.AsQueryable();
@@ -35,10 +37,18 @@ namespace BookLibrary.Controllers
                 books = books.Where(x => x.Writer.LastName.Contains(writerLNameSearch));
             }
 
+            //TODO for search by genre
+            //if (!String.IsNullOrEmpty(GenreId) && this.User.Identity.IsAuthenticated)
+            //{
+            //    books = books.Where(x => x.Genre.GenreName.Contains(GenreId));
+            //}
+
             ViewBag.CurrentSortParam = sortOrder;
             ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewBag.ReleaseDateSortParam = sortOrder == "release_date_asc" ? "release_date_desc" : "release_date_asc";
             ViewBag.WriterSortParam = sortOrder == "writer_asc" ? "writer_desc" : "writer_asc";
+            //TODO for search by genre
+            //ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "GenreName");
 
             switch (sortOrder)
             {
